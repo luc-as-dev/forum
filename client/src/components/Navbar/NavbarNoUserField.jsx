@@ -6,7 +6,9 @@ export default function NavbarNoUserField() {
   return (
     <div className={classes["navbar-no-user-container"]}>
       <Link className={classes["navbar-no-user-link"]}>Log in</Link>
-      <Link className={classes["navbar-no-user-link"]}>Sign up</Link>
+      <Link className={classes["navbar-no-user-link"]} to="/signup">
+        Sign up
+      </Link>
     </div>
   );
 }
