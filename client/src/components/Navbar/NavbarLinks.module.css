@@ -1,0 +1,21 @@
+.navbar-links-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar-links-button {
+  font-size: 14px;
+  text-decoration: none;
+  color: #444;
+
+  padding: 8px;
+}
+
+.navbar-links-button:hover {
+  color: #4169e1;
+}
+
+.navbar-links-button:active {
+  color: #2d669d;
+}
