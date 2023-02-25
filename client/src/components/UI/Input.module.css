@@ -1,0 +1,35 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.input-container label,
+.input-container input {
+  display: block;
+}
+
+.input-container label {
+  flex: 1;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.input-container input {
+  flex: 3;
+  font: inherit;
+  padding: 0.35rem 0.35rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.input-container input:focus {
+  outline: none;
+  border-color: #4169e1;
+  background: #f9f9f9;
+}
+
+.input-container.invalid input {
+  border-color: red;
+  background: #f9f9f9;
+}
