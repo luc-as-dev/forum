@@ -75,16 +75,20 @@ userSchema.methods.toJSON = function () {
 
 //  Find user by email and password
 userSchema.statics.findByCredentials = async (email, password) => {
-  const user = await User.findOne({ email });
-  if (!user) {
-    if (!user) throw new Error("Unable to login");
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      if (!user) throw new Error();
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) throw new Error();
+
+    return user;
+  } catch (e) {
+    throw new Error("Unable to login");
   }
-
-  const isMatch = await bcrypt.compare(password, user.password);
-
-  if (!isMatch) throw new Error("Unable to login");
-
-  return user;
 };
 
 // Pre save middleware
