@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 const SERVER_URL = import.meta.env.VITE_SOME_SERVER_URL;
+console.log("SERVER URL: ", SERVER_URL);
 
 const TOKEN_KEY = "token";
 
