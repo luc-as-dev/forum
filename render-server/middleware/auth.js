@@ -1,5 +1,5 @@
 import jsonwebtoken from "jsonwebtoken";
-import { User } from "../../database/models/user.js";
+import { User } from "../database/models/user.js";
 
 const auth = async (req, res, next) => {
   try {
