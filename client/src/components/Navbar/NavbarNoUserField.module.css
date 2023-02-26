@@ -1,4 +1,5 @@
 .navbar-no-user-container {
+  margin-left: auto;
   display: flex;
   gap: 4px;
 }

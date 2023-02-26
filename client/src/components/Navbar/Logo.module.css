@@ -6,3 +6,17 @@
 .logo-container img {
   height: 20px;
 }
+
+.logo-small {
+  display: none;
+}
+
+@media screen and (max-width: 650px) {
+  .logo-large {
+    display: none;
+  }
+
+  .logo-small {
+    display: initial;
+  }
+}

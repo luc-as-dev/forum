@@ -1,0 +1,17 @@
+.navbar-menu-icon {
+  display: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.navbar-menu-icon i {
+  color: #4169e1;
+  margin: 7px;
+}
+
+@media screen and (max-width: 650px) {
+  .navbar-menu-icon {
+    display: block;
+  }
+}

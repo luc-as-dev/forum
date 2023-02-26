@@ -19,3 +19,9 @@
 .navbar-links-button:active {
   color: #2d669d;
 }
+
+@media screen and (max-width: 1024px) {
+  .navbar-links-button:last-child {
+    display: none;
+  }
+}
