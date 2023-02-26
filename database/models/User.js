@@ -34,6 +34,28 @@ const userSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
+    profile: {
+      firstName: {
+        type: String,
+        trim: true,
+        maxLength: 50,
+      },
+      lastName: {
+        type: String,
+        trim: true,
+        maxLength: 50,
+      },
+      avatar: {
+        type: String,
+        trim: true,
+        default: "/user/avatar/default.png",
+      },
+      bio: {
+        type: String,
+        trim: true,
+        maxLength: 500,
+      },
+    },
     tokens: [
       {
         token: {

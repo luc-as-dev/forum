@@ -1,0 +1,15 @@
+.navbar-user-container {
+  margin-left: auto;
+  display: flex;
+  gap: 4px;
+}
+
+.navbar-user-container img {
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  height: 100%;
+}
+
+.log-out {
+  font-size: 12px;
+}

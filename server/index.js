@@ -13,6 +13,7 @@ const { ORIGIN_WHITELIST, PORT } = process.env;
 app.use(customCors(ORIGIN_WHITELIST));
 app.use(express.json());
 
+app.use(express.static("public"));
 app.use(userRouter);
 
 app.listen(PORT, () => {

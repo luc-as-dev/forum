@@ -4,8 +4,12 @@ import NavbarLinks from "./NavbarLinks";
 import NavbarSearch from "./NavbarSearch";
 import NavbarNoUserField from "./NavbarNoUserField";
 import NavbarMenu from "./NavbarMenu";
+import { useAuth } from "../../hooks/useAuth";
+import NavbarUserField from "./NavbarUserField";
 
 export default function Navbar() {
+  const { user, logout } = useAuth();
+
   return (
     <nav className={classes["navbar"]}>
       <div className={classes["navbar-top"]} />
@@ -14,7 +18,11 @@ export default function Navbar() {
         <Logo></Logo>
         <NavbarLinks />
         <NavbarSearch />
-        <NavbarNoUserField />
+        {!user ? (
+          <NavbarNoUserField />
+        ) : (
+          <NavbarUserField user={user} onLogout={logout} />
+        )}
       </div>
     </nav>
   );
