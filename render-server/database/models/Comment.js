@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import { User } from "./User.js";
-import { Answer } from "./Answer.js";
+import { User } from "./user.js";
+import { Answer } from "./answer.js";
 
 const commentSchema = new mongoose.Schema(
   {

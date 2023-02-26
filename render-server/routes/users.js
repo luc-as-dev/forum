@@ -1,4 +1,4 @@
-import { User, VALID_TO_UPDATE } from "../database/models/User.js";
+import { User, VALID_TO_UPDATE } from "../database/models/user.js";
 import express from "express";
 import auth from "../middleware/auth.js";
 
