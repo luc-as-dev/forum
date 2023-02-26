@@ -5,8 +5,8 @@ import Page from "./template/Page";
 
 export default function SignUp() {
   return (
-    <Page className={classes["sign-up-container"]}>
-      <SignUpForm />
+    <Page>
+      <SignUpForm className={classes["sign-up-form"]} />
     </Page>
   );
 }

@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import Button from "../../UI/Button";
 import Card from "../../UI/Card";
+import Form from "../../UI/Form";
 import Input from "../../UI/Input";
-import classes from "./SignUpForm.module.css";
 
-export default function SignUpForm() {
+const SUCCESS_REDIRECT = "/";
+
+export default function SignUpForm({ className }) {
   const { signUp } = useAuth();
   const navigate = useNavigate();
   const nameInputRef = useRef();
@@ -25,7 +27,7 @@ export default function SignUpForm() {
       },
       (user) => {
         console.log(user);
-        navigate("/");
+        navigate(SUCCESS_REDIRECT);
       },
       (err) => {
         //TODO fix error messages
@@ -34,8 +36,8 @@ export default function SignUpForm() {
     );
   }
   return (
-    <Card className={classes["sign-up-container"]}>
-      <form>
+    <Card className={className}>
+      <Form>
         <h1>Sign up</h1>
         <Input id="name" label="Name" type="text" ref={nameInputRef} />
         <Input id="email" label="Email" type="email" ref={emailInputRef} />
@@ -56,7 +58,7 @@ export default function SignUpForm() {
         <Button type="submit" onClick={submitHandler}>
           Sign up
         </Button>
-      </form>
+      </Form>
     </Card>
   );
 }
