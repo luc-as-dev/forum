@@ -1,18 +1,20 @@
 import express from "express";
 import { config } from "dotenv";
-import cors from "cors";
 import "../database/index.js";
 import { router as userRouter } from "./routes/users.js";
+import customCors from "./middleware/customCors.js";
 
 config();
 
 const app = express();
 
-app.use(cors({ origin: "*" }));
+const { ORIGIN_WHITELIST, PORT } = process.env;
+
+app.use(customCors(ORIGIN_WHITELIST));
 app.use(express.json());
 
 app.use(userRouter);
 
-app.listen(process.env.PORT, () => {
-  console.log(`Started server on port ${process.env.PORT}`);
+app.listen(PORT, () => {
+  console.log(`Started server on port ${PORT}`);
 });
