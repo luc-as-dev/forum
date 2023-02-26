@@ -28,7 +28,7 @@ function fixedUser(user) {
     profile: {
       firstName: user.profile.firstName,
       lastName: user.profile.lastName,
-      avatar: `${SERVER_URL}/${user.profile.avatar}`,
+      avatar: `${SERVER_URL}${user.profile.avatar}`,
       bio: user.profile.bio,
     },
     createdAt: user.createdAt,
