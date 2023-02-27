@@ -37,7 +37,7 @@ export default function SignUpForm({ className }) {
           <ErrorMessage>{error.signUp.name.message}</ErrorMessage>
         )}
         <Input id="email" label="Email" type="email" ref={emailInputRef} />
-        {error && error.signUp.email && (
+        {error && error.signUp && error.signUp.email && (
           <ErrorMessage>{error.signUp.email.message}</ErrorMessage>
         )}
         <Input
