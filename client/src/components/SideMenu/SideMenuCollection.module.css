@@ -1,0 +1,14 @@
+.collection-label {
+  font-size: 0.7rem;
+  padding: 2px 10px;
+  color: #888;
+}
+
+.collection-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.collection-items > * {
+  padding-left: 20px !important;
+}

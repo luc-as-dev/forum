@@ -1,7 +1,32 @@
-.page {
+.page,
+.menu-page-menu,
+.menu-page-inner {
+  padding-top: 73px;
+}
+
+.page,
+.menu-page {
   display: flex;
   justify-content: center;
   max-width: 1024px;
-  padding-top: 53px;
   margin: 0 auto;
+}
+
+.menu-page {
+  gap: 20px;
+}
+
+.menu-page-menu {
+  overflow: hidden;
+  width: 181px;
+}
+
+.menu-page-inner {
+  overflow-y: scroll;
+  flex-grow: 1;
+  height: 100vh;
+}
+
+.menu-page-inner::-webkit-scrollbar {
+  display: none;
 }
