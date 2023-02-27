@@ -33,7 +33,7 @@ export default function SignUpForm({ className }) {
       <Form>
         <h1>Sign up</h1>
         <Input id="name" label="Name" type="text" ref={nameInputRef} />
-        {error && error.signUp.name && (
+        {error && error.signUp && error.signUp.name && (
           <ErrorMessage>{error.signUp.name.message}</ErrorMessage>
         )}
         <Input id="email" label="Email" type="email" ref={emailInputRef} />
@@ -46,7 +46,7 @@ export default function SignUpForm({ className }) {
           type="password"
           ref={passwordInputRef}
         />
-        {error && error.signUp.password && (
+        {error && error.signUp && error.signUp.password && (
           <ErrorMessage>{error.signUp.password.message}</ErrorMessage>
         )}
         <Input
@@ -57,7 +57,7 @@ export default function SignUpForm({ className }) {
           min="1900-01-01"
           max={new Date().toISOString().split("T")[0]}
         />
-        {error && error.signUp.dateOfBirth && (
+        {error && error.signUp && error.signUp.dateOfBirth && (
           <ErrorMessage>{error.signUp.dateOfBirth.message}</ErrorMessage>
         )}
         <Button type="submit" onClick={submitHandler}>
