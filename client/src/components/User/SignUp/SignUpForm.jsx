@@ -1,16 +1,16 @@
 import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import Button from "../../UI/Button";
 import Card from "../../UI/Card";
+import ErrorMessage from "../../UI/ErrorMessage";
 import Form from "../../UI/Form";
 import Input from "../../UI/Input";
 
-const SUCCESS_REDIRECT = "/";
+const LOGGED_IN_REDIRECT = "/";
 
 export default function SignUpForm({ className }) {
-  const { signUp } = useAuth();
-  const navigate = useNavigate();
+  const { user, signUp, error } = useAuth();
   const nameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -18,35 +18,37 @@ export default function SignUpForm({ className }) {
 
   function submitHandler(e) {
     e.preventDefault();
-    signUp(
-      {
-        name: nameInputRef.current.value,
-        email: emailInputRef.current.value,
-        password: passwordInputRef.current.value,
-        dateOfBirth: dobInputRef.current.value,
-      },
-      (user) => {
-        console.log(user);
-        navigate(SUCCESS_REDIRECT);
-      },
-      (err) => {
-        //TODO fix error messages
-        console.log(err);
-      }
-    );
+    signUp({
+      name: nameInputRef.current.value,
+      email: emailInputRef.current.value,
+      password: passwordInputRef.current.value,
+      dateOfBirth: dobInputRef.current.value,
+    });
   }
+
+  if (user) return <Navigate to={LOGGED_IN_REDIRECT} />;
+
   return (
     <Card className={className}>
       <Form>
         <h1>Sign up</h1>
         <Input id="name" label="Name" type="text" ref={nameInputRef} />
+        {error && error.signUp.name && (
+          <ErrorMessage>{error.signUp.name.message}</ErrorMessage>
+        )}
         <Input id="email" label="Email" type="email" ref={emailInputRef} />
+        {error && error.signUp.email && (
+          <ErrorMessage>{error.signUp.email.message}</ErrorMessage>
+        )}
         <Input
           id="password"
           label="Password"
           type="password"
           ref={passwordInputRef}
         />
+        {error && error.signUp.password && (
+          <ErrorMessage>{error.signUp.password.message}</ErrorMessage>
+        )}
         <Input
           id="dob"
           label="Date of birth"
@@ -55,6 +57,9 @@ export default function SignUpForm({ className }) {
           min="1900-01-01"
           max={new Date().toISOString().split("T")[0]}
         />
+        {error && error.signUp.dateOfBirth && (
+          <ErrorMessage>{error.signUp.dateOfBirth.message}</ErrorMessage>
+        )}
         <Button type="submit" onClick={submitHandler}>
           Sign up
         </Button>

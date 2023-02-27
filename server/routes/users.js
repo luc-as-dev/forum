@@ -12,7 +12,7 @@ router.post("/users", async (req, res) => {
     const token = await user.generateAuthToken();
     res.status(201).send({ user, token });
   } catch (e) {
-    res.status(400).send({ message: e.message });
+    res.status(400).send({ signUp: e });
   }
 });
 
@@ -26,7 +26,7 @@ router.post("/users/login", async (req, res) => {
     const token = await user.generateAuthToken();
     res.send({ user, token });
   } catch (e) {
-    res.status(400).send({ message: e.message });
+    res.status(400).send({ login: { message: e.message } });
   }
 });
 
@@ -37,7 +37,7 @@ router.post("/users/logout", auth, async (req, res) => {
     await req.user.save();
     res.send();
   } catch (e) {
-    res.status(500).send({ message: e.message });
+    res.status(500).send({ logout: { message: e.message } });
   }
 });
 
@@ -48,7 +48,7 @@ router.post("/users/logoutAll", auth, async (req, res) => {
     await req.user.save();
     res.send();
   } catch (e) {
-    res.status(500).send({ message: e.message });
+    res.status(500).send({ logoutAll: { message: e.message } });
   }
 });
 
@@ -64,7 +64,7 @@ router.patch("/users/me", auth, async (req, res) => {
   const isValid = updates.every((u) => allowedUpdates.includes(u));
 
   if (!isValid) {
-    return res.status(400).send({ error: "Invalid updates" });
+    return res.status(400).send({ me: { message: e.message } });
   }
 
   try {
@@ -73,7 +73,7 @@ router.patch("/users/me", auth, async (req, res) => {
 
     res.send(req.user);
   } catch (e) {
-    res.status(500).send({ message: e.message });
+    res.status(500).send({ me: { message: e.message } });
   }
 });
 
@@ -83,6 +83,6 @@ router.delete("/users/me", auth, async (req, res) => {
     const user = await req.user.remove();
     res.send(user);
   } catch (e) {
-    res.status(500).send({ message: e.message });
+    res.status(500).send({ me: { message: e.message } });
   }
 });

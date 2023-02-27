@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 const SERVER_URL = import.meta.env.VITE_SOME_SERVER_URL;
-console.log("SERVER URL: ", SERVER_URL);
 
 const TOKEN_KEY = "token";
 
@@ -39,7 +38,7 @@ function fixedUser(user) {
 
 function useProvideAuth() {
   const [user, setUser] = useState(null);
-  const [error, setError] = useState([]);
+  const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(null);
 
   useEffect(() => {
@@ -49,6 +48,10 @@ function useProvideAuth() {
     }
   }, []);
 
+  function clearError() {
+    setError(undefined);
+  }
+
   async function signUp(data, userCallback, errCallback) {
     setIsLoading(true);
     try {
@@ -57,12 +60,11 @@ function useProvideAuth() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      setIsLoading(false);
       if (response.ok) {
         const { user, token } = await response.json();
-
         setToken(token); // TODO find a better way to store token.
         setUser(fixedUser(user));
+        clearError();
         if (userCallback) userCallback(user);
         console.log(user);
       } else {
@@ -72,8 +74,8 @@ function useProvideAuth() {
       }
     } catch (err) {
       console.log(err);
-      setIsLoading(false);
     }
+    setIsLoading(false);
   }
 
   async function login(data, userCallback, errCallback) {
@@ -88,6 +90,7 @@ function useProvideAuth() {
         const { user, token } = await response.json();
         setToken(token); // TODO find a better way to store token.
         setUser(fixedUser(user));
+        clearError();
         if (userCallback) userCallback(user);
       } else {
         const error = await response.json();
@@ -113,6 +116,7 @@ function useProvideAuth() {
       });
       if (response.ok) {
         clearToken(); // TODO find a better way to store token.
+        clearError();
         setUser(null);
       } else {
         console.log(err);
@@ -137,6 +141,7 @@ function useProvideAuth() {
         });
         if (response.ok) {
           const user = await response.json();
+          clearError();
           setUser(fixedUser(user));
         } else {
           const error = await response.json();
