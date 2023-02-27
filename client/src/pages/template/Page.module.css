@@ -30,3 +30,9 @@
 .menu-page-inner::-webkit-scrollbar {
   display: none;
 }
+
+@media screen and (max-width: 650px) {
+  .menu-page-menu {
+    display: none;
+  }
+}
