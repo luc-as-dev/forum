@@ -11,7 +11,7 @@ export default function SideMenu(props) {
     <div className={className}>
       <SideMenuItem to="/">Home</SideMenuItem>
       <SideMenuCollection label="PUBLIC">
-        <SideMenuItem to="/user">Users</SideMenuItem>
+        <SideMenuItem to="/users">Users</SideMenuItem>
       </SideMenuCollection>
     </div>
   );

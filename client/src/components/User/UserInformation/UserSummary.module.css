@@ -1,0 +1,9 @@
+.summary-container {
+  display: flex;
+  gap: 20px;
+}
+
+.avatar {
+  height: 200px;
+  border-radius: 10px;
+}

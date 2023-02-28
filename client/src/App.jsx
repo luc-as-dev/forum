@@ -5,7 +5,9 @@ import { ProvideAuth } from "./hooks/useAuth";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import User from "./pages/User";
+import UserId from "./pages/UserId";
+import UserMe from "./pages/UserMe";
+import Users from "./pages/Users";
 
 function App() {
   return (
@@ -16,7 +18,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/user" element={<User />} />
+          <Route path="/users">
+            <Route path="" element={<Users />} />
+            <Route path="me" element={<UserMe />} />
+            <Route path=":id" element={<UserId />} />
+          </Route>
         </Routes>
       </div>
     </ProvideAuth>
