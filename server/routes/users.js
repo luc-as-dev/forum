@@ -52,6 +52,17 @@ router.post("/users/logoutAll", auth, async (req, res) => {
   }
 });
 
+// Get list of users, public information
+router.get("/users", async (req, res) => {
+  try {
+    const users = await User.find();
+    console.log(users);
+    res.send(users);
+  } catch (e) {
+    res.status(500).send({ users: { message: e.message } });
+  }
+});
+
 // Get user information
 router.get("/users/me", auth, async (req, res) => {
   res.send(req.user);
