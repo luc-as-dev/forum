@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { API_URL } from "../../api/api";
+import { API_URL, fixUser } from "../../api/api";
 
 const TOKEN_KEY = "token";
 
@@ -16,23 +16,6 @@ function getToken() {
 function clearToken() {
   // TODO find a better solution for token
   localStorage.removeItem(TOKEN_KEY);
-}
-
-function fixedUser(user) {
-  return {
-    _id: user._id,
-    name: user.name,
-    email: user.email,
-    dateOfBirth: user.dateOfBirth,
-    profile: {
-      firstName: user.profile.firstName,
-      lastName: user.profile.lastName,
-      avatar: `${API_URL}${user.profile.avatar}`,
-      bio: user.profile.bio,
-    },
-    createdAt: user.createdAt,
-    updatedAt: user.updatedAt,
-  };
 }
 
 function useProvideAuth() {
@@ -62,7 +45,7 @@ function useProvideAuth() {
       if (response.ok) {
         const { user, token } = await response.json();
         setToken(token); // TODO find a better way to store token.
-        setUser(fixedUser(user));
+        setUser(fixUser(user));
         clearError();
         console.log(user);
       } else {
@@ -86,7 +69,7 @@ function useProvideAuth() {
       if (response.ok) {
         const { user, token } = await response.json();
         setToken(token); // TODO find a better way to store token.
-        setUser(fixedUser(user));
+        setUser(fixUser(user));
         clearError();
       } else {
         const error = await response.json();
@@ -114,7 +97,8 @@ function useProvideAuth() {
         clearError();
         setUser(null);
       } else {
-        console.log(err);
+        const error = await response.json();
+        setError(error);
       }
     } catch (err) {
       console.log(err);
@@ -137,11 +121,11 @@ function useProvideAuth() {
         if (response.ok) {
           const user = await response.json();
           clearError();
-          setUser(fixedUser(user));
+          setUser(fixUser(user));
         } else {
           const error = await response.json();
           setError(error);
-          console.log(err);
+          console.log(error);
         }
       } catch (err) {
         console.log(err);
