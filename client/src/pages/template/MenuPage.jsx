@@ -4,13 +4,12 @@ import classes from "./Page.module.css";
 import Page from "./Page";
 
 export default function MenuPage(props) {
-  const className = `${classes["menu-page-inner"]} ${
-    !props.className ? "" : props.className
-  }`;
   return (
     <div className={classes["menu-page"]}>
       <SideMenu className={classes["menu-page-menu"]} />
-      <div className={className}>{props.children}</div>
+      <div className={classes["menu-page-inner"]}>
+        <div className={props.className}>{props.children}</div>
+      </div>
     </div>
   );
 }
