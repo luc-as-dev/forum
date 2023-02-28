@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-
-const SERVER_URL = import.meta.env.VITE_SOME_SERVER_URL;
+import { API_URL } from "../../api/api";
 
 const TOKEN_KEY = "token";
 
@@ -28,7 +27,7 @@ function fixedUser(user) {
     profile: {
       firstName: user.profile.firstName,
       lastName: user.profile.lastName,
-      avatar: `${SERVER_URL}${user.profile.avatar}`,
+      avatar: `${API_URL}${user.profile.avatar}`,
       bio: user.profile.bio,
     },
     createdAt: user.createdAt,
@@ -52,10 +51,10 @@ function useProvideAuth() {
     setError(undefined);
   }
 
-  async function signUp(data, userCallback, errCallback) {
+  async function signUp(data) {
     setIsLoading(true);
     try {
-      const response = await fetch(`${SERVER_URL}/users`, {
+      const response = await fetch(`${API_URL}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -65,12 +64,10 @@ function useProvideAuth() {
         setToken(token); // TODO find a better way to store token.
         setUser(fixedUser(user));
         clearError();
-        if (userCallback) userCallback(user);
         console.log(user);
       } else {
         const error = await response.json();
         setError(error);
-        if (errCallback) errCallback(error);
       }
     } catch (err) {
       console.log(err);
@@ -78,10 +75,10 @@ function useProvideAuth() {
     setIsLoading(false);
   }
 
-  async function login(data, userCallback, errCallback) {
+  async function login(data) {
     setIsLoading(true);
     try {
-      const response = await fetch(`${SERVER_URL}/users/login`, {
+      const response = await fetch(`${API_URL}/users/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -91,11 +88,9 @@ function useProvideAuth() {
         setToken(token); // TODO find a better way to store token.
         setUser(fixedUser(user));
         clearError();
-        if (userCallback) userCallback(user);
       } else {
         const error = await response.json();
         setError(error);
-        if (errCallback) errCallback(error);
       }
     } catch (err) {
       console.log(err);
@@ -107,7 +102,7 @@ function useProvideAuth() {
     setIsLoading(true);
     const token = getToken();
     try {
-      const response = await fetch(`${SERVER_URL}/users/logout`, {
+      const response = await fetch(`${API_URL}/users/logout`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -132,7 +127,7 @@ function useProvideAuth() {
     const token = getToken();
     if (token) {
       try {
-        const response = await fetch(`${SERVER_URL}/users/me`, {
+        const response = await fetch(`${API_URL}/users/me`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
