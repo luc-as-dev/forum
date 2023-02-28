@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import jsonwebtoken from "jsonwebtoken";
 
 export const VALID_TO_UPDATE = ["name", "email", "password", "dateOfBirth"];
+const PUBLIC_VALUE = ["name", "profile"];
 const SALT_ROUNDS = 8;
 
 const userSchema = new mongoose.Schema(
@@ -85,6 +86,16 @@ userSchema.methods.generateAuthToken = async function () {
   await user.save();
 
   return token;
+};
+
+// Public user information
+userSchema.methods.getPublic = function () {
+  const user = this;
+  const publicUser = {};
+
+  PUBLIC_VALUE.forEach((key) => (publicUser[key] = user[key]));
+
+  return publicUser;
 };
 
 // To control displayed key-value pairs

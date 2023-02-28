@@ -57,6 +57,24 @@ router.get("/users/me", auth, async (req, res) => {
   res.send(req.user);
 });
 
+// Get public user information by id
+router.get("/users/:id", async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    console.log(id);
+    const user = await User.findById(id);
+    if (!user) {
+      return res
+        .status(404)
+        .send({ users: { message: `Could not find user by id: ${id}` } });
+    }
+    res.send(user.getPublic());
+  } catch (e) {
+    res.status(500).send({ users: { message: e.message } });
+  }
+});
+
 // Patch user
 router.patch("/users/me", auth, async (req, res) => {
   const updates = Object.keys(req.body);
