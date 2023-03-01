@@ -1,0 +1,13 @@
+.users-filter-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.users-filter-container > input {
+  border: 1px solid #bbb;
+  flex-grow: 1;
+
+  max-width: 300px;
+  border-radius: 5px;
+  padding: 4px 8px;
+}
