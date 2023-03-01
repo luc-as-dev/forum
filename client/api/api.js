@@ -9,7 +9,7 @@ export function fixUser(user) {
     profile: {
       firstName: user.profile.firstName,
       lastName: user.profile.lastName,
-      avatar: `${API_URL}${user.profile.avatar}`,
+      avatar: `https://api.dicebear.com/5.x/${user.profile.avatar.styleName}/svg?seed=${user.profile.avatar.seed}`,
       bio: user.profile.bio,
     },
     createdAt: user.createdAt,

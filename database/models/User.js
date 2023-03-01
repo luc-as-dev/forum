@@ -50,9 +50,19 @@ const userSchema = new mongoose.Schema(
         maxLength: 50,
       },
       avatar: {
-        type: String,
-        trim: true,
-        default: "/user/avatar/default.png",
+        seed: {
+          type: String,
+          trim: true,
+          minlength: 1,
+          default: function () {
+            return this._id.toString();
+          },
+        },
+        styleName: {
+          type: String,
+          trim: true,
+          default: "identicon",
+        },
       },
       bio: {
         type: String,
