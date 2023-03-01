@@ -12,12 +12,9 @@
   margin: 0 auto;
 }
 
-.menu-page {
-}
-
 .menu-page-menu {
   overflow: hidden;
-  width: 181px;
+  min-width: 181px;
   padding-left: 20px;
 }
 

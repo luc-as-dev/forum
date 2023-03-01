@@ -1,6 +1,23 @@
 .user-preview-container {
+  display: flex;
+  gap: 10px;
 }
 
 .user-preview-container img {
-  width: 80px;
+  width: 60px;
+  border-radius: 10px;
+}
+
+.user-preview-container > div {
+  display: flex;
+}
+
+.user-preview-name {
+  text-decoration: none;
+  color: #4191e1;
+  font-size: 0.9rem;
+}
+
+.user-preview-name:hover {
+  color: #4161e1;
 }

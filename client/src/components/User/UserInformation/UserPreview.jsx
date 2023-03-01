@@ -9,7 +9,9 @@ export default function UserPreview({ user }) {
         <img src={user.profile.avatar} />
       </Link>
       <div>
-        <h3>{user.name}</h3>
+        <Link className={classes["user-preview-name"]} to={`/users/${user.id}`}>
+          {user.name}
+        </Link>
       </div>
     </div>
   );
