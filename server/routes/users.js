@@ -63,7 +63,6 @@ router.get("/users", async (req, res) => {
 
   if (req.query.search) {
     const parts = req.query.search.split(":");
-    console.log(parts);
     filter[parts[0]] = new RegExp(parts[1]);
   }
 
