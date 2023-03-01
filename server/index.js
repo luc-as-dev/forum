@@ -14,6 +14,9 @@ app.use(customCors(ORIGIN_WHITELIST));
 app.use(express.json());
 
 app.use(express.static("public"));
+app.use((req, res, next) => {
+  setTimeout(next, 200);
+});
 app.use(userRouter);
 
 app.listen(PORT, () => {
