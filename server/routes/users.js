@@ -56,7 +56,6 @@ router.post("/users/logoutAll", auth, async (req, res) => {
 router.get("/users", async (req, res) => {
   try {
     const users = await User.find();
-    console.log(users);
     res.send(users);
   } catch (e) {
     res.status(500).send({ users: { message: e.message } });
@@ -73,7 +72,6 @@ router.get("/users/:id", async (req, res) => {
   const id = req.params.id;
 
   try {
-    console.log(id);
     const user = await User.findById(id);
     if (!user) {
       return res
