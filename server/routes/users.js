@@ -54,8 +54,26 @@ router.post("/users/logoutAll", auth, async (req, res) => {
 
 // Get list of users, public information
 router.get("/users", async (req, res) => {
+  const filter = {};
+  const options = {
+    limit: parseInt(req.query.limit),
+    skip: parseInt(req.query.skip),
+    sort: {},
+  };
+
+  if (req.query.search) {
+    const parts = req.query.search.split(":");
+    console.log(parts);
+    filter[parts[0]] = new RegExp(parts[1]);
+  }
+
+  if (req.query.sortBy) {
+    const parts = req.query.sortBy.split(":");
+    options.sort[parts[0]] = parts[1] === "desc" ? -1 : 1;
+  }
+
   try {
-    const users = await User.find();
+    const users = await User.find(filter, undefined, options);
     res.send(users);
   } catch (e) {
     res.status(500).send({ users: { message: e.message } });
