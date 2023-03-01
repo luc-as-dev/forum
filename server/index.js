@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 app.use((req, res, next) => {
-  setTimeout(next, 200);
+  setTimeout(next, 500);
 });
 app.use(userRouter);
 
