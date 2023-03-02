@@ -4,35 +4,39 @@ import bcrypt from "bcrypt";
 import jsonwebtoken from "jsonwebtoken";
 
 export const VALID_TO_UPDATE = ["name", "email", "password", "dateOfBirth"];
+const PUBLIC_VALUE = ["name", "profile"];
 const SALT_ROUNDS = 8;
 
 const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, "Name is required"],
       trim: true,
     },
     password: {
       type: String,
-      required: true,
+      required: [true, "Password is required"],
       trim: true,
-      minLength: 6,
+      validate(value) {
+        if (value.length < 6) {
+          throw new Error("Password must be at least 6 characters");
+        }
+      },
     },
     email: {
       type: String,
+      required: [true, "Email is required"],
       unique: true,
       trim: true,
       lowercase: true,
       validate(value) {
-        if (!validator.isEmail(value)) {
-          throw new Error("Email is invalid");
-        }
+        if (!validator.isEmail(value)) throw new Error("Email is invalid");
       },
     },
     dateOfBirth: {
       type: Date,
-      required: true,
+      required: [true, "Date of birth is required"],
     },
     profile: {
       firstName: {
@@ -46,9 +50,19 @@ const userSchema = new mongoose.Schema(
         maxLength: 50,
       },
       avatar: {
-        type: String,
-        trim: true,
-        default: "/user/avatar/default.png",
+        seed: {
+          type: String,
+          trim: true,
+          minlength: 1,
+          default: function () {
+            return this._id.toString();
+          },
+        },
+        styleName: {
+          type: String,
+          trim: true,
+          default: "identicon",
+        },
       },
       bio: {
         type: String,
@@ -82,6 +96,16 @@ userSchema.methods.generateAuthToken = async function () {
   await user.save();
 
   return token;
+};
+
+// Public user information
+userSchema.methods.getPublic = function () {
+  const user = this;
+  const publicUser = {};
+
+  PUBLIC_VALUE.forEach((key) => (publicUser[key] = user[key]));
+
+  return publicUser;
 };
 
 // To control displayed key-value pairs
@@ -122,6 +146,32 @@ userSchema.pre("save", async function (next) {
   }
 
   next();
+});
+
+userSchema.post("save", function (err, doc, next) {
+  if (err.errors) {
+    const errors = {};
+    const errKeys = Object.keys(err.errors);
+    errKeys.forEach(
+      (key) =>
+        (errors[key] = {
+          message: err.errors[key].properties.message,
+        })
+    );
+    next(errors);
+  } else if (err.name === "MongoServerError" && err.code === 11000) {
+    const errors = {};
+    const errKeys = Object.keys(err.keyValue);
+    errKeys.forEach(
+      (key) =>
+        (errors[key] = {
+          message: "Email is already registered",
+        })
+    );
+    next(errors);
+  } else {
+    next(err);
+  }
 });
 
 export const User = mongoose.model("User", userSchema);
