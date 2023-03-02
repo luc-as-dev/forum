@@ -11,7 +11,6 @@
   align-items: start;
 
   max-width: 1064px;
-  min-height: 100vh;
   margin: 0 auto;
 }
 
@@ -29,6 +28,7 @@
   padding-right: 20px;
   padding-left: 20px;
   padding-bottom: 20px;
+  min-height: calc(100vh - 53px);
 }
 
 @media screen and (max-width: 650px) {
