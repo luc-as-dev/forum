@@ -1,34 +1,34 @@
 .page,
 .menu-page-menu,
 .menu-page-inner {
-  padding-top: 73px;
+  padding-top: 20px;
 }
 
 .page,
 .menu-page {
   display: flex;
   justify-content: center;
+  align-items: start;
+
   max-width: 1064px;
+  min-height: 100vh;
   margin: 0 auto;
 }
 
 .menu-page-menu {
-  overflow: hidden;
+  position: sticky;
+  top: 53px;
   min-width: 181px;
+  max-height: 300px;
   padding-left: 20px;
 }
 
 .menu-page-inner {
-  overflow-y: scroll;
   flex-grow: 1;
-  height: 100vh;
+  border-left: 1px solid #bbb;
   padding-right: 20px;
   padding-left: 20px;
   padding-bottom: 20px;
-}
-
-.menu-page-inner::-webkit-scrollbar {
-  display: none;
 }
 
 @media screen and (max-width: 650px) {

@@ -1,0 +1,8 @@
+.app-content {
+  position: absolute;
+  scroll-behavior: smooth;
+  z-index: -1;
+  top: 53px;
+
+  width: 100vw;
+}
