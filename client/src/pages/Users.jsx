@@ -6,6 +6,7 @@ import UsersList from "../components/Users/UsersList";
 import MenuPage from "./template/MenuPage";
 import classes from "./Users.module.css";
 
+const LIMIT = 36;
 const QUERIES_EMPTY = {
   search: "name:^",
   skip: 0,
@@ -44,11 +45,10 @@ export default function Users() {
   async function getUsers() {
     let qs = "";
     Object.keys(queries).forEach((key) => {
-      if (queries[key] !== "")
-        qs = `${qs}${qs === "" ? "?" : "&"}${key}=${queries[key]}`;
+      if (queries[key] !== "") qs = `${qs}&${key}=${queries[key]}`;
     });
     try {
-      const response = await fetch(`${API_URL}/users${qs}`);
+      const response = await fetch(`${API_URL}/users?limit=${LIMIT}${qs}`);
       if (response.ok) {
         const users = await response.json();
         setUsers(users.map((user) => fixUser(user)));
