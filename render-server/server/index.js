@@ -1,5 +1,5 @@
 import express from "express";
-import { config } from "dotenv";
+import "../database/db.js";
 import { router as userRouter } from "./routers/users.js";
 import customCors from "./middleware/customCors.js";
 
