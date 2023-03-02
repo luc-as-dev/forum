@@ -1,10 +1,7 @@
 import express from "express";
-import { config } from "dotenv";
-import "./database/db.js";
-import { router as userRouter } from "./routes/users.js";
+import "../database/index.js";
+import { router as userRouter } from "./routers/users.js";
 import customCors from "./middleware/customCors.js";
-
-config();
 
 const app = express();
 
@@ -14,6 +11,9 @@ app.use(customCors(ORIGIN_WHITELIST));
 app.use(express.json());
 
 app.use(express.static("public"));
+app.use((req, res, next) => {
+  setTimeout(next, 500);
+});
 app.use(userRouter);
 
 app.listen(PORT, () => {
