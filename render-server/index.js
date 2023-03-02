@@ -1,5 +1,5 @@
 import express from "express";
-import "../database/db.js";
+import "./database/db.js";
 import { router as userRouter } from "./routers/users.js";
 import customCors from "./middleware/customCors.js";
 
