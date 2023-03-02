@@ -1,7 +1,7 @@
 import express from "express";
 import { config } from "dotenv";
 import "../database/index.js";
-import { router as userRouter } from "./routes/users.js";
+import { router as userRouter } from "./routers/users.js";
 import customCors from "./middleware/customCors.js";
 
 config();
