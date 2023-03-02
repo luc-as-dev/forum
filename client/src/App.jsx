@@ -10,7 +10,11 @@ import UserId from "./pages/UserId";
 import UserMe from "./pages/UserMe";
 import Users from "./pages/Users";
 
+const NO_FOOTER = ["/login", "/signUp"];
+
 function App() {
+  const location = useLocation();
+
   return (
     <ProvideAuth>
       <div className="App">
@@ -26,6 +30,7 @@ function App() {
               <Route path=":id" element={<UserId />} />
             </Route>
           </Routes>
+          {!NO_FOOTER.includes(location.pathname) && <Footer />}
         </div>
       </div>
     </ProvideAuth>
