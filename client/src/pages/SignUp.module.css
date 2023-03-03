@@ -1,5 +1,5 @@
 .sign-up-form {
   width: 300px;
   margin: 100px auto;
-  padding: 20px;
+  padding: var(--general-padding);
 }

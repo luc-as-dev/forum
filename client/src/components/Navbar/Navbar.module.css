@@ -17,9 +17,9 @@
 .navbar-inner {
   display: flex;
 
-  max-width: 1064px;
+  max-width: calc(var(--max-width) + 2 * var(--general-padding));
   height: calc(var(--navbar-height) - var(--navbar-border-height));
   margin: 0 auto;
-  padding: 8px 20px;
-  gap: 10px;
+  padding: 8px var(--general-padding);
+  gap: var(--general-padding);
 }

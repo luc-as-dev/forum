@@ -1,6 +1,6 @@
 .summary-container {
   display: flex;
-  gap: 20px;
+  gap: var(--general-padding);
 }
 
 .avatar {

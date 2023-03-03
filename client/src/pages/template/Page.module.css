@@ -1,7 +1,7 @@
 .page,
 .menu-page-menu,
 .menu-page-inner {
-  padding-top: 20px;
+  padding-top: var(--general-padding);
 }
 
 .page,
@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: start;
 
-  max-width: 1064px;
+  max-width: calc(var(--max-width) + 2 * var(--general-padding));
   margin: 0 auto;
 }
 
@@ -18,17 +18,15 @@
   position: sticky;
   top: var(--navbar-height);
   width: var(--side-menu-width);
-  padding-left: 20px;
-  padding-bottom: 20px;
+  padding-left: var(--general-padding);
+  padding-bottom: var(--general-padding);
 }
 
 .menu-page-inner {
   display: flex;
   flex-grow: 1;
   border-left: 1px solid #bbb;
-  padding-right: 20px;
-  padding-left: 20px;
-  padding-bottom: 20px;
+  padding: var(--general-padding);
   min-height: calc(100vh - var(--navbar-height));
 }
 
