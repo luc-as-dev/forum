@@ -2,7 +2,7 @@
   position: absolute;
   scroll-behavior: smooth;
   z-index: -1;
-  top: 53px;
+  top: var(--navbar-height);
 
   width: 100vw;
 }
