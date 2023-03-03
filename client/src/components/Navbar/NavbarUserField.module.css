@@ -5,7 +5,8 @@
 }
 
 .navbar-user-container img {
-  border: 1px solid #bbb;
+  background-color: #ddd;
+  border: 1px solid #ccc;
   border-radius: 5px;
   height: 100%;
 }
