@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { API_URL, fixUser } from "../../api/api";
 import UsersFilter from "../components/Users/UsersFilter";
 import UsersList from "../components/Users/UsersList";
+import UsersPageSelector from "../components/Users/UsersPageSelector";
 import MenuPage from "./template/MenuPage";
 import classes from "./Users.module.css";
 
@@ -66,10 +67,11 @@ export default function Users() {
   }, []);
 
   return (
-    <MenuPage className={classes["user-page-container"]}>
+    <MenuPage className={classes["users-page-container"]}>
       <h1>Users</h1>
       <UsersFilter queries={queries} onFilterChange={updateQueryHandler} />
-      {users ? <UsersList users={users} /> : "Loading..."}
+      <UsersList users={users} />
+      <UsersPageSelector />
     </MenuPage>
   );
 }

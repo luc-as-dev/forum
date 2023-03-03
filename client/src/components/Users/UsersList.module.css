@@ -1,6 +1,12 @@
-.users-list-container {
+.users-list-loading,
+.users-list {
+  flex-grow: 1;
+}
+
+.users-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  align-content: start;
 
   gap: 50px 10px;
 }
