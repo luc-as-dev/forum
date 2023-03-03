@@ -4,6 +4,10 @@
   gap: 4px;
 }
 
+.navbar-user-no-avatar {
+  aspect-ratio: 1;
+}
+
 .navbar-user-container img {
   background-color: #ddd;
   border: 1px solid #ccc;

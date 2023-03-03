@@ -18,6 +18,11 @@ function clearToken() {
   localStorage.removeItem(TOKEN_KEY);
 }
 
+function hasToken() {
+  // TODO find a better solution for token
+  return !!localStorage.getItem(TOKEN_KEY);
+}
+
 function useProvideAuth() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState();
@@ -141,6 +146,7 @@ function useProvideAuth() {
     logout,
     error,
     isLoading,
+    hasToken,
   };
 }
 

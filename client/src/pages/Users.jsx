@@ -7,7 +7,7 @@ import UsersPageSelector from "../components/Users/UsersPageSelector";
 import MenuPage from "./template/MenuPage";
 import classes from "./Users.module.css";
 
-const LIMIT = 36;
+export const LIMIT = 36;
 const QUERIES_EMPTY = {
   search: "name:^",
   skip: 0,

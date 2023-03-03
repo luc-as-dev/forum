@@ -8,6 +8,17 @@ export default function NavbarUserField({ user, onLogout }) {
     onLogout();
   }
 
+  if (!user) {
+    return (
+      <div className={classes["navbar-user-container"]}>
+        <Link to="/users/me">
+          <img className={classes["navbar-user-no-avatar"]} />
+        </Link>
+        <Button className={classes["log-out"]}>Log out</Button>
+      </div>
+    );
+  }
+
   return (
     <div className={classes["navbar-user-container"]}>
       <Link to="/users/me">

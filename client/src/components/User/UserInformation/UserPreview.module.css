@@ -7,18 +7,32 @@
   background-color: #ddd;
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  aspect-ratio: 1;
   width: 60px;
   border-radius: 10px;
+}
+
+.user-preview-no-avatar {
+  border-color: aqua;
+  width: 100px;
 }
 
 .user-preview-container > div {
   display: flex;
 }
 
+.user-preview-no-name,
 .user-preview-name {
   text-decoration: none;
-  color: #4191e1;
   font-size: 0.9rem;
+}
+
+.user-preview-no-name {
+  color: #2d669d;
+}
+
+.user-preview-name {
+  color: #4191e1;
 }
 
 .user-preview-name:hover {

@@ -8,7 +8,7 @@ import { useAuth } from "../../hooks/useAuth";
 import NavbarUserField from "./NavbarUserField";
 
 export default function Navbar() {
-  const { user, logout, isLoading } = useAuth();
+  const { user, logout, hasToken } = useAuth();
 
   return (
     <nav className={classes["navbar"]}>
@@ -18,12 +18,15 @@ export default function Navbar() {
         <Logo></Logo>
         <NavbarLinks />
         <NavbarSearch />
-        {!isLoading &&
-          (!user ? (
-            <NavbarNoUserField />
+        {!user ? (
+          hasToken() ? (
+            <NavbarUserField />
           ) : (
-            <NavbarUserField user={user} onLogout={logout} />
-          ))}
+            <NavbarNoUserField />
+          )
+        ) : (
+          <NavbarUserField user={user} onLogout={logout} />
+        )}
       </div>
     </nav>
   );
