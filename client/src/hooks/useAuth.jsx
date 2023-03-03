@@ -128,6 +128,7 @@ function useProvideAuth() {
           clearError();
           setUser(fixUser(user));
         } else {
+          clearToken();
           const error = await response.json();
           setError(error);
           console.log(error);
