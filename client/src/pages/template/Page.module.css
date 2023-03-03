@@ -16,10 +16,10 @@
 
 .menu-page-menu {
   position: sticky;
-  top: 53px;
-  min-width: 181px;
-  max-height: 300px;
+  top: var(--navbar-height);
+  width: var(--side-menu-width);
   padding-left: 20px;
+  padding-bottom: 20px;
 }
 
 .menu-page-inner {
@@ -29,7 +29,7 @@
   padding-right: 20px;
   padding-left: 20px;
   padding-bottom: 20px;
-  min-height: calc(100vh - 53px);
+  min-height: calc(100vh - var(--navbar-height));
 }
 
 @media screen and (max-width: 650px) {

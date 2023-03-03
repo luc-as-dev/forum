@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
+:root {
+  --navbar-height: 53px;
+  --navbar-border-height: 3px;
+
+  --side-menu-width: 181px;
+}
+
 * {
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
