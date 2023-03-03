@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classes from "./UsersFilter.module.css";
+import UsersSortBy from "./UsersSortBy";
 
 export default function UsersFilter({ queries, onFilterChange }) {
   function searchChangeHandler(event) {
@@ -14,6 +15,7 @@ export default function UsersFilter({ queries, onFilterChange }) {
         value={queries.search === "" ? "" : queries.search.slice(6)}
         onChange={searchChangeHandler}
       />
+      <UsersSortBy />
     </div>
   );
 }
