@@ -1,6 +1,6 @@
 .menu-item {
   text-decoration: none;
-  color: #444;
+  color: var(--text-color-2);
 
   font-size: 0.8rem;
 
@@ -8,6 +8,6 @@
 }
 
 .menu-item-active {
-  background-color: #d9d9d9;
-  border-right: 3px solid #4169e1;
+  background-color: var(--bg-color-shade);
+  border-right: 3px solid var(--style-color-1);
 }

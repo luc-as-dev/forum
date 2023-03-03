@@ -7,16 +7,10 @@
   height: 20px;
 }
 
-.logo-small {
-  display: none;
+.logo-large {
+  display: var(--first-breakpoint-display);
 }
 
-@media screen and (max-width: 650px) {
-  .logo-large {
-    display: none;
-  }
-
-  .logo-small {
-    display: initial;
-  }
+.logo-small {
+  display: var(--second-breakpoint-display);
 }

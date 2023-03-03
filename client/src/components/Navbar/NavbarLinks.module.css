@@ -5,23 +5,18 @@
 }
 
 .navbar-links-button {
+  display: var(--first-breakpoint-display);
   font-size: 14px;
   text-decoration: none;
-  color: #444;
+  color: var(--text-color-2);
 
   padding: 8px;
 }
 
 .navbar-links-button:hover {
-  color: #4169e1;
+  color: var(--style-color-1);
 }
 
 .navbar-links-button:active {
-  color: #2d669d;
-}
-
-@media screen and (max-width: 1024px) {
-  .navbar-links-button:last-child {
-    display: none;
-  }
+  color: var(--style-color-3);
 }

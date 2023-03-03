@@ -1,24 +1,39 @@
-.button {
-  font: inherit;
+.button,
+.button-outlined {
   text-decoration: none;
   cursor: pointer;
-
-  color: #fff;
-  background-color: #4191e1;
-  border: 1px solid #4169e1;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
 
   border-radius: 5px;
   padding: 0.5rem 1.5rem;
 }
 
-.button:focus {
+.button:focus,
+.button-outlined {
   outline: none;
+}
+
+.button {
+  color: var(--text-color-1);
+  background-color: var(--style-color-1);
+  border: 1px solid var(--style-color-3);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
 }
 
 .button:hover,
 .button:active {
-  background-color: #4179e1;
-  border-color: #2d669d;
+  background-color: var(--style-color-1-shade);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.button-outlined {
+  color: var(--style-color-1);
+  background-color: var(--style-color-4);
+  border: 1px solid var(--style-color-1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.button-outlined:hover,
+.button-outlined.button:active::before {
+  background-color: var(--style-color-4-shade);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }

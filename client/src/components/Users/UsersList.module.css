@@ -5,7 +5,7 @@
 
 .users-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(var(--users-list-columns), 1fr);
   align-content: start;
 
   gap: 50px 10px;

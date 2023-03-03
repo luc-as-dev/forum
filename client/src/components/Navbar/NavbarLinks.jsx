@@ -6,7 +6,6 @@ export default function NavbarLinks() {
   return (
     <div className={classes["navbar-links-container"]}>
       <Link className={classes["navbar-links-button"]}>Questions</Link>
-      <Link className={classes["navbar-links-button"]}>About</Link>
     </div>
   );
 }

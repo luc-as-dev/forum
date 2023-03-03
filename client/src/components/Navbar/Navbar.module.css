@@ -1,7 +1,7 @@
 .navbar {
   position: fixed;
 
-  background-color: #efefef;
+  background-color: var(--navbar-bg-color);
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
 
   width: 100vw;
@@ -9,7 +9,7 @@
 }
 
 .navbar-top {
-  background-color: #4169e1;
+  background-color: var(--style-color-1);
   width: 100%;
   height: var(--navbar-border-height);
 }

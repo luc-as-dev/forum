@@ -4,17 +4,12 @@
 }
 
 .user-preview-container img {
-  background-color: #ddd;
-  border: 1px solid #ccc;
+  background-color: var(--avatar-bg-color);
+  border: 1px solid var(--border-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  aspect-ratio: 1;
   width: 60px;
+  height: 60px;
   border-radius: 10px;
-}
-
-.user-preview-no-avatar {
-  border-color: aqua;
-  width: 100px;
 }
 
 .user-preview-container > div {
@@ -28,13 +23,13 @@
 }
 
 .user-preview-no-name {
-  color: #2d669d;
+  color: var(--style-color-3);
 }
 
 .user-preview-name {
-  color: #4191e1;
+  color: var(--style-color-2);
 }
 
 .user-preview-name:hover {
-  color: #4161e1;
+  color: var(--style-color-1-shade);
 }

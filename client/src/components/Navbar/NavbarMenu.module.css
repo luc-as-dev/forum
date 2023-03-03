@@ -1,17 +1,11 @@
 .navbar-menu-icon {
-  display: none;
+  display: var(--second-breakpoint-display);
   cursor: pointer;
-  font-size: 20px;
-  margin-right: 10px;
+  font-size: 30px;
 }
 
 .navbar-menu-icon i {
-  color: #4169e1;
+  display: var(--second-breakpoint-display);
+  color: var(--style-color-1);
   margin: 7px;
-}
-
-@media screen and (max-width: 650px) {
-  .navbar-menu-icon {
-    display: block;
-  }
 }

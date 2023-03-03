@@ -9,10 +9,11 @@
 }
 
 .navbar-user-container img {
-  background-color: #ddd;
-  border: 1px solid #ccc;
+  background-color: var(--avatar-bg-color);
+  border: 1px solid var(--border-color);
   border-radius: 5px;
-  height: 100%;
+  height: var(--navbar-avatar-size);
+  width: var(--navbar-avatar-size);
 }
 
 .log-out {

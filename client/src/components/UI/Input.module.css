@@ -20,16 +20,16 @@
   font: inherit;
   padding: 0.35rem 0.35rem;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
 }
 
 .input-container input:focus {
   outline: none;
-  border-color: #4169e1;
-  background: #f9f9f9;
+  border-color: var(--style-color-1);
+  background: var(--card-bg-shade);
 }
 
 .input-container.invalid input {
   border-color: red;
-  background: #f9f9f9;
+  background: var(--card-bg-shade);
 }

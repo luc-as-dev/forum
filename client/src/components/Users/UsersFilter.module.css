@@ -1,13 +1,16 @@
 .users-filter-container {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--general-padding);
 }
 
 .users-filter-container > input {
-  border: 1px solid #bbb;
+  border: 1px solid var(--border-color);
   flex-grow: 1;
 
-  max-width: 300px;
+  max-width: 400px;
+  min-width: 250;
   border-radius: 5px;
   padding: 4px 8px;
 }

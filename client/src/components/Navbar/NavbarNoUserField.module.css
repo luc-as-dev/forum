@@ -8,23 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-basis: 100px;
-
-  text-decoration: none;
-  color: #fff;
 
   font-size: 12px;
-  border-radius: 5px;
   min-width: 60px;
-}
-
-.navbar-no-user-link:first-child {
-  color: #4169e1;
-  border: 1px solid #4169e1;
-  background-color: #d2e8ff;
-}
-
-.navbar-no-user-link:last-child {
-  border: 1px solid #4169e1;
-  background-color: #4191e1;
 }

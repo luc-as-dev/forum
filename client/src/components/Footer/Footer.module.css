@@ -1,4 +1,4 @@
 .footer {
+  background: var(--footer-color);
   height: 200px;
-  background-color: #222;
 }

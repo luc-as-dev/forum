@@ -1,13 +1,44 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
 :root {
+  --overscroll-color: #232629;
+  --footer-color: #232629;
+  --bg-color: #eee;
+  --bg-color-shade: #d9d9d9;
+  --border-color: #bbb;
+  --navbar-bg-color: #efefef;
+  --avatar-bg-color: #ddd;
+  --card-bg: #fff;
+  --card-bg-shade: #f9f9f9;
+
+  --text-color-1: #fff;
+  --text-color-2: #333;
+  --text-color-2-shade: #888;
+
+  --style-color-1: #4169e1;
+  --style-color-1-shade: #4179e1;
+  --style-color-2: #4191e1;
+  --style-color-3: #2d669d;
+  --style-color-4: #d2e8ff;
+  --style-color-4-shade: #d3ecff;
+
+  --first-breakpoint-display: flex;
+  --second-breakpoint-display: none;
+
   --navbar-height: 53px;
   --navbar-border-height: 3px;
+  --navbar-avatar-size: 34px;
 
   --general-padding: 24px;
-  --max-width: 1264px;
+  --max-width: 1224px;
 
   --side-menu-width: 181px;
+
+  --users-list-columns: 4;
+}
+
+html {
+  background: var(--overscroll-color);
 }
 
 * {
@@ -17,6 +48,29 @@
   margin: 0;
 }
 
-body {
-  background-color: #eee;
+.app-content {
+  background: var(--bg-color);
+}
+
+@media screen and (max-width: 1120px) {
+  :root {
+    --users-list-columns: 3;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  :root {
+    --users-list-columns: 2;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  :root {
+    --first-breakpoint-display: none;
+    --second-breakpoint-display: initial;
+
+    --general-padding: 15px;
+
+    --users-list-columns: 1;
+  }
 }
