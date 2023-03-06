@@ -1,13 +1,14 @@
 import React from "react";
-import { LIMIT } from "../../pages/Users";
 import UserPreview from "../User/UserInformation/UserPreview";
 import classes from "./UsersList.module.css";
 
-export default function UsersList({ users }) {
+const LIMIT = 36;
+
+export default function UsersList({ users, limit }) {
   if (!users) {
     return (
       <div className={classes["users-list"]}>
-        {Array(LIMIT)
+        {Array(limit || 24)
           .fill(null)
           .map((n, i) => (
             <UserPreview key={i} />

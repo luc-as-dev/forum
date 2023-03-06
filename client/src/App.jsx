@@ -3,12 +3,12 @@ import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import { ProvideAuth } from "./hooks/useAuth";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
-import UserId from "./pages/UserId";
-import UserMe from "./pages/UserMe";
-import Users from "./pages/Users";
+import Home from "./views/Home";
+import Login from "./views/Login";
+import SignUp from "./views/SignUp";
+import UserId from "./views/UserId";
+import UserMe from "./views/UserMe";
+import Users from "./views/Users";
 
 const NO_FOOTER = ["/login", "/signUp"];
 

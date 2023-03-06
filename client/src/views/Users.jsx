@@ -70,7 +70,7 @@ export default function Users() {
     <MenuPage className={classes["users-page-container"]}>
       <h1>Users</h1>
       <UsersFilter queries={queries} onFilterChange={updateQueryHandler} />
-      <UsersList users={users} />
+      <UsersList users={users} limit={LIMIT} />
       <UsersPageSelector />
     </MenuPage>
   );
