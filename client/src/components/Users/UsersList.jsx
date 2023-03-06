@@ -8,7 +8,7 @@ export default function UsersList({ users, limit }) {
   if (!users) {
     return (
       <div className={classes["users-list"]}>
-        {Array(limit || 24)
+        {Array(limit || LIMIT)
           .fill(null)
           .map((n, i) => (
             <UserPreview key={i} />
